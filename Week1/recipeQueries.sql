@@ -31,3 +31,34 @@ ON r.recipe_id = rc.recipe_id
 JOIN categories AS c
 ON c.category_id = rc.category_id
 WHERE c.category_name = 'Italian';
+
+--All the vegan and Japanese recipes:
+SELECT r.recipe_name
+FROM Recipes r
+JOIN RecipeCategories rc ON r.recipe_id = rc.recipe_id
+JOIN Categories c ON rc.category_id = c.category_id
+WHERE c.category_name = 'Vegan' OR c.category_name = 'Japanese';
+
+--All the cakes that do not need baking:
+SELECT DISTINCT r.recipe_name
+FROM Recipes r
+JOIN RecipeCategories rc ON r.recipe_id = rc.recipe_id
+JOIN Categories c ON rc.category_id = c.category_id
+JOIN RecipeIngredients ri ON r.recipe_id = ri.recipe_id
+JOIN Ingredients i ON ri.ingredient_id = i.ingredient_id
+WHERE c.category_name = 'Cake' AND r.recipe_id NOT IN (
+    SELECT r.recipe_id
+    FROM Recipes r
+    JOIN RecipeIngredients ri ON r.recipe_id = ri.recipe_id
+    JOIN Ingredients i ON ri.ingredient_id = i.ingredient_id
+    WHERE i.ingredient_name = 'Pie Crust' OR i.ingredient_name = 'Pizza Dough'
+);
+
+--All the vegetarian recipes with potatoes:
+SELECT r.recipe_name
+FROM Recipes r
+JOIN RecipeCategories rc ON r.recipe_id = rc.recipe_id
+JOIN Categories c ON rc.category_id = c.category_id
+JOIN RecipeIngredients ri ON r.recipe_id = ri.recipe_id
+JOIN Ingredients i ON ri.ingredient_id = i.ingredient_id
+WHERE c.category_name = 'Vegetarian' AND i.ingredient_name = 'Potatoes';

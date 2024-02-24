@@ -2,7 +2,11 @@
 INSERT INTO Recipes (recipe_id, recipe_name, cooking_time, preparation_time, spiciness) VALUES
 (1, 'Spaghetti Carbonara', 30, 15, 2),
 (2, 'Margherita Pizza', 20, 30, 1),
-(3, 'Chicken Curry', 40, 20, 4);
+(3, 'Chicken Curry', 40, 20, 4),
+(4, 'No-Bake Cheesecake', 0, 180, 1),
+(5, 'Roasted Brussels Sprouts', 30, 10, 1),
+(6, 'Mac & Cheese', 20, 10, 1),
+(7, 'Tamagoyaki Japanese Omelette', 10, 5, 1);
 
 -- Inserting test data into the Ingredients table
 INSERT INTO Ingredients (ingredient_id, ingredient_name) VALUES
@@ -16,7 +20,27 @@ INSERT INTO Ingredients (ingredient_id, ingredient_name) VALUES
 (8, 'Basil'),
 (9, 'Chicken'),
 (10, 'Curry Powder'),
-(11, 'Coconut Milk');
+(11, 'Coconut Milk'),
+(12, 'Condensed milk'),
+(13, 'Cream Cheese'),
+(14, 'Lemon Juice'),
+(15, 'Pie Crust'),
+(16, 'Cherry Jam'),
+(17, 'Brussels Sprouts'),
+(18, 'Sesame seeds'),
+(19, 'Olive oil'),
+(20, 'Butter'),
+(21, 'Flour'),
+(22, 'Macaroni'),
+(23, 'Shredded Cheddar cheese'),
+(24, 'Soy sauce'),
+(25, 'Sugar'),
+(26, 'Salt'),
+(27, 'Potatoes'),
+(28, 'Lemon juice'),
+(29, 'Pepper'),
+(30, 'Milk'),
+(31, 'Eggs');
 
 -- Inserting test data into the Directions table
 INSERT INTO Directions (direction_id, instruction) VALUES
@@ -29,7 +53,35 @@ INSERT INTO Directions (direction_id, instruction) VALUES
 (7, 'Bake in preheated oven at 220C for 15 minutes.'),
 (8, 'Brown chicken pieces in a skillet.'),
 (9, 'Add curry powder and other spices.'),
-(10, 'Pour in coconut milk and simmer until chicken is cooked through.');
+(10, 'Pour in coconut milk and simmer until chicken is cooked through.'),
+(11, 'Beat Cream Cheese'),
+(12, 'Add condensed Milk and blend'),
+(13, 'Add Lemon Juice and blend'),
+(14, 'Add the mix to the pie crust'),
+(15, 'Spread the Cherry Jam'),
+(16, 'Place in refrigerator for 3h.'),
+(17, 'Preheat the oven'),
+(18, 'Mix the ingredients in a bowl'),
+(19, 'Spread the mix on baking sheet'),
+(20, 'Bake for 30\''),
+(21, 'Cook Macaroni for 8\''),
+(22, 'Melt butter in a saucepan'),
+(23, 'Add flour, salt, pepper and mix'),
+(24, 'Add Milk and mix'),
+(25, 'Cook until mix is smooth'),
+(26, 'Add cheddar cheese'),
+(27, 'Add the macaroni'),
+(28, 'Beat the eggs'),
+(29, 'Add soya sauce, sugar and salt'),
+(30, 'Add oil to a sauce pan'),
+(31, 'Bring to medium heat'),
+(32, 'Add some mix to the sauce pan'),
+(33, 'Let is cook for 1\''),
+(34, 'Add oil to a sauce pan'),
+(35, 'Add some mix to the sauce pan'),
+(36, 'Let is cook for 1\''),
+(37, 'Remove pan from fire');
+
 
 -- Inserting test data into the RecipeDirections table
 INSERT INTO RecipeDirections (recipe_id, direction_id, step_number) VALUES
@@ -42,15 +94,63 @@ INSERT INTO RecipeDirections (recipe_id, direction_id, step_number) VALUES
 (2, 7, 3),
 (3, 8, 1),
 (3, 9, 2),
-(3, 10, 3);
+(3, 10, 3),
+(4, 11, 1),
+(4, 12, 2),
+(4, 13, 3),
+(4, 14, 4),
+(4, 15, 5),
+(4, 16, 6),
+(5, 17, 1),
+(5, 18, 2),
+(5, 19, 3),
+(5, 20, 4),
+(6, 21, 1),
+(6, 22, 2),
+(6, 23, 3),
+(6, 24, 4),
+(6, 25, 5),
+(6, 26, 6),
+(6, 27, 7),
+(7, 28, 1),
+(7, 29, 2),
+(7, 30, 3),
+(7, 31, 4),
+(7, 32, 5),
+(7, 33, 6),
+(7, 34, 7),
+(7, 35, 8),
+(7, 36, 9),
+(7, 37, 10);
 
 -- Inserting test data into the Categories table
 INSERT INTO Categories (category_id, category_name) VALUES
 (1, 'Italian'),
 (2, 'Fast Food'),
-(3, 'Indian');
+(3, 'Indian'),
+(4, 'No-Bake'),
+(5, 'Japanese'),
+(6, 'Vegetarian'),
+(7, 'Cake'),
+(8, 'Vegan'),
+(9, 'Gluten-free');
 
 -- Inserting test data into the RecipeCategories table
+INSERT INTO RecipeCategories (recipe_id, category_id) VALUES
+(1, 1),
+(2, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(4, 6), 
+(7, 5),
+(7, 6),
+(4, 7), 
+(5, 8),
+(5, 9),
+(6, 6); 
+
+-- Inserting test data into the RecipeIngredients table
 INSERT INTO RecipeIngredients (recipe_id, ingredient_id, quantity, unit, prep_type) VALUES
 (1, 1, 100, 'grams', 'None'),
 (1, 2, 50, 'grams', 'Sliced'),
@@ -62,11 +162,31 @@ INSERT INTO RecipeIngredients (recipe_id, ingredient_id, quantity, unit, prep_ty
 (2, 8, 5, 'leaves', 'None'),
 (3, 9, 200, 'grams', 'Cubed'),
 (3, 10, 2, 'tablespoons', 'None'),
-(3, 11, 400, 'ml', 'None');
+(3, 11, 400, 'ml', 'None'),
+(4, 12, 1, 'can', 'None'),
+(4, 13, 400, 'grams', 'None'),
+(4, 14, 1, 'unit', 'None'),
+(4, 15, 1, 'unit', 'None'),
+(4, 16, 1, 'jar', 'None'),
+(5, 17, 200, 'grams', 'None'),
+(5, 18, 1, 'unit', 'None'),
+(5, 19, 1, 'cup', 'None'),
+(5, 28, 1, 'teaspoon', 'squeezed' ),
+(5, 29, 1,  'tablespoon', 'None'),
+(5, 26, 1, 'teaspoon', 'None'),
+(6, 22, 8, 'oz', 'Fresh'),
+(6, 23, 50, 'grams', 'Sliced'),
+(6, 26, 1, 'teaspoon', 'None'),
+(6, 20, 20, 'grams', 'None'),
+(6, 21, 5, 'Glass', 'None'),
+(6, 29, 3, 'teaspoon', 'None'),
+(6, 30, 1, 'Glass', 'None'),
+(7, 31, 2, 'piece', 'None'),
+(7, 24, 5, 'teaspoon', 'None'),
+(7, 25, 2, 'tablespoon', 'None'),
+(7, 26, 1, 'teaspoon', 'None'),
+(7, 19, 1, 'glass', 'None');
 
--- Inserting test data into the RecipeIngredients table
-INSERT INTO RecipeCategories (recipe_id, category_id) VALUES
-(1, 1),
-(2, 1),
-(2, 2),
-(3, 3);
+
+
+
