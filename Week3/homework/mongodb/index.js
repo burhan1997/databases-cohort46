@@ -1,6 +1,5 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 require("dotenv").config();
-//I got always an error here i couldnt solve it
 
 const { seedDatabase } = require("./seedDatabase.js");
 
