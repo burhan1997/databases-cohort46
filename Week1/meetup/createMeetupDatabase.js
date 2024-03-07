@@ -41,6 +41,15 @@ connection.connect((err) => {
                   if (err) throw err;
                   console.log("Meeting table created or already exists");
 
+
+                connection.query(
+                    "CREATE TABLE IF NOT EXISTS Meeting_invitee (meeting_no INT, invitee_no INT)",
+                    (err, result) => {
+                      if (err) throw err;
+                      console.log(
+                        "Meeting_invitee table created or already exists"
+                      );
+
                   // Insert data into the Invitee table
                   connection.query(`
                       INSERT INTO Invitee (invitee_no, invitee_name, invited_by)
