@@ -1,11 +1,10 @@
-const { MongoClient } = require('mongodb');
-const fs = require('fs');
-const csv = require('csv-parser');
-require('dotenv').config();
+const { MongoClient } = require("mongodb");
+const fs = require("fs");
+const csv = require("csv-parser");
+require("dotenv").config();
 
 const uri = process.env.MONGODB_URL;
-const dbName = 'databaseWeek4';
-
+const dbName = "databaseWeek4";
 
 const client = new MongoClient(uri);
 
@@ -15,6 +14,9 @@ async function main() {
 
     const db = client.db(dbName);
     const collection = db.collection("population_data");
+
+  
+    await collection.drop();
 
     // Stream the CSV file and insert each row as a document into the collection
     const results = [];
