@@ -1,0 +1,50 @@
+1. The table provided is not in the First Normal Form (1NF) because it contains repeating groups. Specifically, the food_code and food_description columns contain multiple values separated by commas, which is a violation of 1NF.
+
+2. Entities to Extract
+From the given table, i can extract the following entities:
+
+-Member (member_id, member_name, member_address)
+-Dinner (dinner_id, dinner_date)
+-Venue (venue_code, venue_description)
+-Food (food_code, food_description)
+
+3.Tables and Columns for a 3NF Compliant Solution
+To create a 3NF compliant solution, we can create separate tables for each entity and then use foreign keys to establish relationships between them.
+
+1-Member Table
+
+member_id (Primary Key)
+member_name
+member_address
+
+2-Dinner Table
+
+dinner_id (Primary Key)
+dinner_date
+
+3-Venue Table
+
+venue_code (Primary Key)
+venue_description
+
+4-Food Table
+
+food_code (Primary Key)
+food_description
+
+5-Dinner_Member Table (Many-to-Many Relationship)
+
+dinner_id (Foreign Key to Dinner Table)
+member_id (Foreign Key to Member Table)
+
+6-Dinner_Venue Table (One-to-Many Relationship)
+
+dinner_id (Foreign Key to Dinner Table)
+venue_code (Foreign Key to Venue Table)
+
+7-Dinner_Food Table (Many-to-Many Relationship)
+
+dinner_id (Foreign Key to Dinner Table)
+food_code (Foreign Key to Food Table)
+
+In this way, we will ensure that the database is in Third Normal Form (3NF). This structure also allows for more flexibility in managing the information about dinners and members of the dinner club.
